@@ -1,11 +1,15 @@
 package com.qf.oa.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.qf.oa.entity.Student;
 import com.qf.oa.mapper.StudentMapper;
 import com.qf.oa.service.IStudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -35,11 +39,21 @@ public class StudentServiceImpl implements IStudentService {
 
     @Override
     public int updateByPrimaryKeySelective(Student record) {
-        return updateByPrimaryKeySelective(record);
+        return studentMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
     public int updateByPrimaryKey(Student record) {
-        return updateByPrimaryKey(record);
+        return studentMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public PageInfo<Student> selectAll(String currentPage) {
+        PageHelper.startPage(Integer.parseInt(currentPage),3);
+        List<Student>list=studentMapper.selectAll();
+
+        PageInfo pageInfo=new PageInfo(list);
+        return pageInfo;
+    }
+
 }

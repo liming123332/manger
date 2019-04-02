@@ -1,6 +1,9 @@
 package com.qf.oa.service;
 
+import com.github.pagehelper.PageInfo;
 import com.qf.oa.entity.Student;
+
+import java.util.List;
 
 public interface IStudentService {
     int deleteByPrimaryKey(Long id);
@@ -14,4 +17,6 @@ public interface IStudentService {
     int updateByPrimaryKeySelective(Student record);
 
     int updateByPrimaryKey(Student record);
+
+    PageInfo <Student> selectAll(String currentPage);
 }
