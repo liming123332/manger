@@ -1,5 +1,6 @@
 package com.qf.oa.service;
 
+import com.github.pagehelper.PageInfo;
 import com.qf.oa.entity.Teacher;
 
 public interface ITeacherService {
@@ -14,4 +15,6 @@ public interface ITeacherService {
     int updateByPrimaryKeySelective(Teacher record);
 
     int updateByPrimaryKey(Teacher record);
+
+    PageInfo getList(Integer pn);
 }
