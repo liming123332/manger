@@ -4,6 +4,8 @@ import com.qf.oa.entity.Room;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Mapper
 @Component
 public interface RoomMapper {
@@ -18,4 +20,6 @@ public interface RoomMapper {
     int updateByPrimaryKeySelective(Room record);
 
     int updateByPrimaryKey(Room record);
+
+    List<Room> getRoomList();
 }

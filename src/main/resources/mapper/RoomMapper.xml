@@ -55,4 +55,7 @@
     set cname = #{cname,jdbcType=VARCHAR}
     where cid = #{cid,jdbcType=BIGINT}
   </update>
+  <select id="getRoomList" resultMap="BaseResultMap">
+    select * from room
+  </select>
 </mapper>

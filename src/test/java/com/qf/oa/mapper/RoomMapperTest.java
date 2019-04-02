@@ -21,6 +21,11 @@ public class RoomMapperTest {
         room.setCname("java1810");
         roomMapper.insertSelective(room);
     }
+    @Test
+    public void test2(){
+       Room room= roomMapper.selectByPrimaryKey(Long.parseLong("2"));
+        System.out.println(room.getCname());
+    }
 
 
 }

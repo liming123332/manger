@@ -1,5 +1,6 @@
 package com.qf.oa.service;
 
+import com.github.pagehelper.PageInfo;
 import com.qf.oa.entity.Room;
 
 public interface IRoomService {
@@ -14,4 +15,6 @@ public interface IRoomService {
     int updateByPrimaryKeySelective(Room record);
 
     int updateByPrimaryKey(Room record);
+
+    PageInfo<Room> getPageList(String currentPage);
 }

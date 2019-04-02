@@ -1,11 +1,15 @@
 package com.qf.oa.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.qf.oa.entity.Room;
 import com.qf.oa.mapper.RoomMapper;
 import com.qf.oa.service.IRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -42,5 +46,13 @@ public class RoomServiceImpl implements IRoomService {
     @Override
     public int updateByPrimaryKey(Room record) {
         return roomMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public PageInfo<Room> getPageList(String currentPage) {
+        PageHelper.startPage(Integer.parseInt(currentPage),3);
+        List<Room> roomList=roomMapper.getRoomList();
+        PageInfo<Room> pageInfo=new PageInfo<>(roomList);
+        return pageInfo;
     }
 }
