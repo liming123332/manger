@@ -1,7 +1,9 @@
 package com.qf.oa.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.qf.oa.entity.Room;
 import com.qf.oa.entity.Teacher;
+import com.qf.oa.service.IRoomService;
 import com.qf.oa.service.ITeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ public class TeacherController {
     @Autowired
     private ITeacherService teacherService;
 
+    @Autowired
+    private IRoomService roomService;
+
     @RequestMapping("/page/{pn}")
     private String page(@PathVariable Integer pn, Model model){
         PageInfo pageInfo=teacherService.getList(pn);
@@ -26,7 +31,9 @@ public class TeacherController {
     }
 
     @RequestMapping("/toAdd")
-    public String toAdd(){
+    public String toAdd(Model model){
+        List<Room> list=roomService.getRoomList();
+        model.addAttribute("roomList", list);
         return "teacherAdd";
     }
 

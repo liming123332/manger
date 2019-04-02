@@ -55,4 +55,9 @@ public class RoomServiceImpl implements IRoomService {
         PageInfo<Room> pageInfo=new PageInfo<>(roomList);
         return pageInfo;
     }
+
+    @Override
+    public List<Room> getRoomList() {
+        return roomMapper.getRoomList();
+    }
 }

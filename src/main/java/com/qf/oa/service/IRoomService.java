@@ -3,6 +3,8 @@ package com.qf.oa.service;
 import com.github.pagehelper.PageInfo;
 import com.qf.oa.entity.Room;
 
+import java.util.List;
+
 public interface IRoomService {
     int deleteByPrimaryKey(Long cid);
 
@@ -17,4 +19,6 @@ public interface IRoomService {
     int updateByPrimaryKey(Room record);
 
     PageInfo<Room> getPageList(String currentPage);
+
+    List<Room> getRoomList();
 }
