@@ -37,4 +37,33 @@ public class TeacherController {
         return "teacherAdd";
     }
 
+    @RequestMapping("/add")
+    public String add(Teacher teacher){
+        teacherService.insertSelective(teacher);
+        return "redirect:/teacher/page/1";
+    }
+
+    @RequestMapping("/toUpdate/{id}")
+    public String toUpdate(@PathVariable Long id,Model model){
+        Teacher teacher = teacherService.selectByPrimaryKey(id);
+        List<Room> list=roomService.getRoomList();
+        model.addAttribute("roomList", list);
+        model.addAttribute("teacher",teacher);
+        return "teacherUpdate";
+    }
+
+    @RequestMapping("/update")
+    public String update(Teacher teacher){
+        teacherService.updateByPrimaryKeySelective(teacher);
+        return "redirect:/teacher/page/1";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable Long id){
+        teacherService.deleteByPrimaryKey(id);
+        return "redirect:/teacher/page/1";
+    }
+
+
+
 }
