@@ -17,4 +17,6 @@ public interface IRoomService {
     int updateByPrimaryKey(Room record);
 
     PageInfo<Room> getPageList(String currentPage);
+
+    int selectByParentId(Long id);
 }

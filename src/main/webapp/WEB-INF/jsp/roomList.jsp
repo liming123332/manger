@@ -13,7 +13,7 @@
         <tr>
             <td>${room.cid}</td>
             <td>${room.cname}</td>
-            <td><a href="room/toUpdate">编辑</a></td>
+            <td><a href="room/toUpdate/${room.cid}">编辑</a>&nbsp;&nbsp;<a href="room/delete/${room.cid}">删除</a></td>
         </tr>
         </c:forEach>
         <tr>
