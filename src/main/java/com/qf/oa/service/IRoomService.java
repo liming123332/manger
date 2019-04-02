@@ -20,5 +20,7 @@ public interface IRoomService {
 
     PageInfo<Room> getPageList(String currentPage);
 
+    int selectByParentId(Long id);
+
     List<Room> getRoomList();
 }

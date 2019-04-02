@@ -22,4 +22,6 @@ public interface StudentMapper {
     int updateByPrimaryKey(Student record);
 
     List<Student> selectAll();
+
+    int selectByCid(Long id);
 }

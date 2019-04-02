@@ -17,8 +17,8 @@
                 <td>${teacher.id}</td>
                 <td>${teacher.tname}</td>
                 <td>${teacher.age}</td>
-                <td>${teacher.cid}</td>
-                <td><a href="">编辑</a>|<a href="">删除</a> </td>
+                <td>${teacher.room.cname}</td>
+                <td><a href="teacher/toUpdate/${teacher.id}">编辑</a>|<a href="teacher/delete/${teacher.id}">删除</a> </td>
             </tr>
         </c:forEach>
     </table>

@@ -7,6 +7,20 @@
     <result column="age" jdbcType="BIGINT" property="age" />
     <result column="cid" jdbcType="BIGINT" property="cid" />
   </resultMap>
+
+  <resultMap id="BaseResultWithRoomMap" type="com.qf.oa.entity.Teacher">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="tname" jdbcType="VARCHAR" property="tname" />
+    <result column="age" jdbcType="BIGINT" property="age" />
+    <result column="cid" jdbcType="BIGINT" property="cid" />
+    <!--连表查询-->
+    <association property="room" javaType="com.qf.oa.entity.Room">
+      <id column="cid" property="cid"/>
+      <result column="cname" property="cname"/>
+    </association>
+  </resultMap>
+
+
   <sql id="Base_Column_List">
     id, tname, age, cid
   </sql>
@@ -17,10 +31,11 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
 
-  <select id="getList" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from teacher
+  <select id="getList" resultMap="BaseResultWithRoomMap">
+    SELECT r.cname,t.* FROM `teacher` t,room r
+    <where>
+      t.cid=r.cid
+    </where>
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

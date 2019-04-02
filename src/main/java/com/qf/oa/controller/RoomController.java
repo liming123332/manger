@@ -29,4 +29,26 @@ public class RoomController {
         roomService.insertSelective(room);
         return "redirect:/room/page/1";
     }
+    @RequestMapping("/toUpdate/{id}")
+    public String toUpdate(@PathVariable Long id,Model model){
+        Room room = roomService.selectByPrimaryKey(id);
+        model.addAttribute("room",room);
+        return "roomUpdate";
+    }
+    @RequestMapping("/update")
+    public String update(Room room){
+        roomService.updateByPrimaryKey(room);
+        return "redirect:/room/page/1";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable Long id){
+        int count=roomService.selectByParentId(id);
+        if(count>0){
+            return "redirect:/room/page/1";
+        }else{
+            roomService.deleteByPrimaryKey(id);
+            return "redirect:/room/page/1";
+        }
+    }
 }

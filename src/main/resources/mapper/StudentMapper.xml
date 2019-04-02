@@ -86,4 +86,7 @@
       cid = #{cid,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectByCid" parameterType="Long" resultType="int">
+    select count(*) from student where cid=#{id}
+  </select>
 </mapper>

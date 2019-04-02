@@ -3,7 +3,9 @@ package com.qf.oa.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.qf.oa.entity.Room;
+import com.qf.oa.entity.Student;
 import com.qf.oa.mapper.RoomMapper;
+import com.qf.oa.mapper.StudentMapper;
 import com.qf.oa.service.IRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +19,8 @@ public class RoomServiceImpl implements IRoomService {
 
     @Autowired
     private RoomMapper roomMapper;
-
+    @Autowired
+    private StudentMapper studentMapper;
     @Override
     public int deleteByPrimaryKey(Long cid) {
         return roomMapper.deleteByPrimaryKey(cid);
@@ -54,6 +57,12 @@ public class RoomServiceImpl implements IRoomService {
         List<Room> roomList=roomMapper.getRoomList();
         PageInfo<Room> pageInfo=new PageInfo<>(roomList);
         return pageInfo;
+    }
+
+    @Override
+    public int selectByParentId(Long id) {
+        int count=studentMapper.selectByCid(id);
+        return count;
     }
 
     @Override
