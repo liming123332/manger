@@ -64,4 +64,9 @@ public class RoomServiceImpl implements IRoomService {
         int count=studentMapper.selectByCid(id);
         return count;
     }
+
+    @Override
+    public List<Room> getRoomList() {
+        return roomMapper.getRoomList();
+    }
 }
